@@ -2,8 +2,6 @@
 pragma solidity ^0.8.19;
 
 contract TodoTasksStorage {
-    uint256 private taskCount = 0;
-
     struct Task {
         uint256 id;
         string name;
@@ -11,23 +9,42 @@ contract TodoTasksStorage {
         bool completed;
     }
 
-    mapping(uint256 => Task) private tasks;
+    mapping(uint256 => Task) public tasks;
+    uint256 public taskCount;
 
     event TaskCreated(uint256 id, string name, string description);
     event TaskCompletedToggle(uint256 id, bool completed);
     event TaskDeleted(uint256 id);
     event TasksCleared(uint256 remainingTasks);
+    event TaskRetrieved(
+        uint256 id,
+        string name,
+        string description,
+        bool completed
+    );
+    event TasksRetrieved(uint256 count);
 
-    function getTask(uint256 _id) public view returns (Task memory) {
-        require(_id < taskCount, "Task does not exist");
-        return tasks[_id];
+    function getTask(uint256 _id) public returns (Task memory) {
+        Task memory task = tasks[_id];
+        emit TaskRetrieved(
+            task.id,
+            task.name,
+            task.description,
+            task.completed
+        );
+        return task;
     }
 
-    function getTasks(uint256 _limit, uint256 _offset) public view returns (Task[] memory) {
-        if (_limit == 0) _limit = 10;
-        if (_offset == 0) _offset = 0;
+    function getTasks(
+        uint256 _limit,
+        uint256 _offset
+    ) public returns (Task[] memory) {
+        require(_offset <= taskCount, "Offset out of bounds");
 
-        require(_offset < taskCount, "Offset out of bounds");
+        if (_limit == 0) {
+            _limit = 10;
+        }
+
         uint256 end = _offset + _limit;
         if (end > taskCount) {
             end = taskCount;
@@ -37,17 +54,21 @@ contract TodoTasksStorage {
         for (uint256 i = _offset; i < end; i++) {
             _tasks[i - _offset] = tasks[i];
         }
+        emit TasksRetrieved(_tasks.length);
         return _tasks;
     }
 
-    function createTask(string memory _name, string memory _description) public {
+    function createTask(
+        string memory _name,
+        string memory _description
+    ) public returns (Task memory) {
         tasks[taskCount] = Task(taskCount, _name, _description, false);
         emit TaskCreated(taskCount, _name, _description);
         taskCount++;
+        return tasks[taskCount - 1];
     }
 
     function toggleTask(uint256 _id) public {
-        require(_id < taskCount, "Task does not exist");
         tasks[_id].completed = !tasks[_id].completed;
         emit TaskCompletedToggle(_id, tasks[_id].completed);
     }
@@ -70,7 +91,6 @@ contract TodoTasksStorage {
     }
 
     function deleteTask(uint256 _id) public {
-        require(_id < taskCount, "Task does not exist");
         delete tasks[_id];
         taskCount--;
         emit TaskDeleted(_id);

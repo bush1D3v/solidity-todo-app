@@ -3,9 +3,9 @@ import type { AnchorHTMLAttributes, HTMLAttributes } from "vue";
 import { cn } from "@/lib/utils";
 
 export interface LinkProps extends /* @vue-ignore */ AnchorHTMLAttributes {
-    class?: HTMLAttributes[ "class" ];
-    target: "_blank" | "_self" | "_parent" | "_top";
-    href: string;
+	class?: HTMLAttributes["class"];
+	target: "_blank" | "_self" | "_parent" | "_top";
+	href: string;
 }
 
 const props = defineProps<LinkProps>();

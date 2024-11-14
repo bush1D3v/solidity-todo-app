@@ -98,7 +98,7 @@
 		@apply text-sm md:text-base lg:text-lg font-semibold;
 	}
 	p {
-		@apply text-destructive;
+		@apply text-text;
 	}
 }
 
@@ -124,6 +124,6 @@
 }
 
 ::selection {
-	background: var(--primary);
-	color: var(--text);
+	background: var(--text);
+	color: var(--background);
 }

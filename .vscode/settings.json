@@ -1,0 +1,10 @@
+{
+	"material-icon-theme.folders.associations": {
+		"tags": "mjml",
+		"migrations": "database"
+	},
+	"material-icon-theme.files.associations": {
+		".tool-versions": "Document"
+	},
+	"cSpell.words": ["biomejs", "clsx", "ethereum", "pinia", "struct"]
+}

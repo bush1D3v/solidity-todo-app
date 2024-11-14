@@ -27,13 +27,14 @@
 		"radix-vue": "^1.9.8",
 		"tailwind-merge": "^2.5.4",
 		"tailwindcss-animate": "^1.0.7",
+		"truffle": "^5.11.5",
 		"vue": "^3.5.12",
 		"vue-router": "^4.4.5",
 		"vue-sonner": "^1.2.3",
 		"web3": "^4.14.0"
 	},
 	"devDependencies": {
-		"@tsconfig/node20": "^20.1.4",
+		"@tsconfig/node16": "^20.1.4",
 		"@types/node": "^20.17.0",
 		"@vitejs/plugin-vue": "^5.1.4",
 		"@vitejs/plugin-vue-jsx": "^4.0.1",

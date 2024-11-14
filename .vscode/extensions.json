@@ -1,0 +1,15 @@
+{
+	"recommendations": [
+		"biomejs.biome",
+		"EditorConfig.EditorConfig",
+		"tintinweb.vscode-ethover",
+		"xabikos.JavaScriptSnippets",
+		"PKief.material-icon-theme",
+		"JuanBlanco.solidity",
+		"hosho.solidity-debugger",
+		"bradlc.vscode-tailwindcss",
+		"trufflesuite-csi.truffle-vscode",
+		"Vue.volar",
+		"streetsidesoftware.code-spell-checker"
+	]
+}

@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/views/Home.vue";
+import CreateTask from "@/views/tasks/CreateTask.vue";
+import DetailTask from "@/views/tasks/DetailTask.vue";
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
@@ -19,6 +21,28 @@ const router = createRouter({
 					"Solidity Todo App is an solidity study project, integrated with web3 and vue.js.",
 				ogImage: "/logo.svg",
 				ogUrl: "http://localhost:5173/",
+			},
+		},
+		{
+			path: "/tasks/:id",
+			name: "Detail Task",
+			component: DetailTask,
+		},
+		{
+			path: "/tasks/create",
+			name: "CreateTask",
+			component: CreateTask,
+			meta: {
+				title: "Create Task | Solidity Todo App",
+				description:
+					"Solidity Todo App is an solidity study project, integrated with web3 and vue.js.",
+				keywords: "solidity, todo app, todo, ethereum, blockchain, web3, solidity todo app",
+				robots: "index, follow",
+				ogTitle: "Create Task | Solidity Todo App",
+				ogDescription:
+					"Solidity Todo App is an solidity study project, integrated with web3 and vue.js.",
+				ogImage: "/logo.svg",
+				ogUrl: "http://localhost:5173/tasks/create",
 			},
 		},
 	],

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import {cn} from "@/lib/utils";
-import type {HTMLAttributes} from "vue";
+import { cn } from "@/lib/utils";
+import type { HTMLAttributes } from "vue";
 
 export interface ImageSkeletonSvgProps {
 	class?: HTMLAttributes["class"];
